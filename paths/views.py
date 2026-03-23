@@ -357,11 +357,13 @@ def ai_tutor_chat(request):
     )
 
     try:
-        response = client.models.generate_content(
-            model="gemini-3-flash-preview", 
-            contents=f"{system_instruction}\n\nStudent: {user_message}",
-        )
-        ai_reply = response.text
+        model = genai.GenerativeModel("gemini-1.5-flash")
+
+        response = model.generate_content(
+        f"{system_instruction}\n\nStudent: {user_message}"
+    )
+
+    ai_reply = response.text
 
         # SAVE AI REPLY (Only if Logged In)
         if is_authenticated:
