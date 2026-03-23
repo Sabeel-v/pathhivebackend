@@ -17,7 +17,8 @@ from .models import LearningPath
 from .models import ChatMessage
 from .serializers import ChatMessageSerializer
 
-from google import genai
+
+import google.generativeai as genai
 
 
 from .models import (
